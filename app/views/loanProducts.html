@@ -1,0 +1,78 @@
+<div ng-include="'views/common/header.html'"></div>
+<div class="container post-login" ng-controller="LoanProductsCtrl">
+  <div ng-include src="'/views/alert.html'"></div>
+  <div class="shortcuts">
+      <ul role="tablist">
+        <li role="presentation"><a href="#/loanProducts" class="active">Loan Products</a></li>
+        <li role="presentation"><a href="#/charges">Charges</a></li>
+        <li role="presentation"><a href="#/accounting">Accounting</a></li>
+      </ul>
+  </div>
+  <div class="list">
+    <table st-table="displayed" st-safe-src="rowCollection" class="table">
+      <thead>
+        <tr>
+          <th colspan="3">
+              <div class="filters" >
+                <div style="float:right;">            
+                  <ul role="tablist">
+                    <li role="presentation">
+                    <div class="action">                      
+                      <a href="#/createloanproduct" class="btn grid-button" >
+                          Create Loan Product
+                      </a>
+                    </div>
+                    </li>
+                 </ul> 
+                </div>
+                <div class="search" style="float:right;">
+                    <input type="text" st-search="" class="search-box" placeholder="Search Loan Products" />
+                </div>
+             </div>  
+          </th>
+        </tr>
+        <tr>
+          <th st-sort="name">Loan Product Name</th>
+          <th st-sort="numberOfRepayments" class="number">Repayment Frequency</th>
+          <th st-sort="interestRatePerPeriod" class="number">Interest Rate</th>
+        </tr>
+      </thead>
+      <tbody ng-hide="isLoading">        
+        <tr st-select-row="row" st-select-mode="single" ng-repeat="loanProducts in displayed">
+          <td><a ng-href="#editloanproduct/{{loanProducts.id}}">{{loanProducts.name}}</a></td>
+          <td class="number">
+              <div class="name">
+                <a ng-href="#editloanproduct/{{loanProducts.id}}">{{loanProducts.numberOfRepayments}}</a>
+              </div>
+          </td>
+          <td class="number">
+            <span>
+              <a ng-href="#editloanproduct/{{loanProducts.id}}">{{loanProducts.interestRatePerPeriod}}</a>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+      <tbody ng-show="isLoading">
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="loading-indicator">Loading...</div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot ng-hide="isLoading">
+          <tr>
+            <td colspan="8">
+              <div class="table-footer">
+                <div class="export">
+                    <strong>Export: <a href="" class="link pdf" ng-click="pdfExport()" target="_blank">PDF</a><a href="" class="link excel" ng-click="xlsExport()" target="_blank">Excel</a>
+                </div>
+                <div class="paginate">
+                  <div st-pagination="" class="pagination" st-items-by-page="itemsByPage" st-displayed-pages="displayedPages"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+    </table>
+  </div>
+</div>

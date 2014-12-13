@@ -1,0 +1,145 @@
+ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/_mixins.scss";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss";
+@import "main-variables.scss";
+@import "main-web.scss";
+@import "main-tablet.scss";
+
+nav .navbar-nav > .active > a {
+	background-color: #E28B00 !important;
+	color: white !important;
+}
+
+nav {
+	background: white !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+	margin-right: 0!important;
+}
+
+.st-sort-ascent:after {
+    content: "▲";
+}
+
+.st-sort-descent:after {
+    content: "▼";
+}
+
+.pagination {
+    margin: 0px 0px !important;
+    float: right !important;
+}
+
+.login-box {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -187px;
+	margin-left: -190px;
+	padding:0;
+
+}
+
+.form-control-feedback{
+	top: 6px;	
+	right: 10px
+}
+
+nav .notifications > strong{
+	right: 18px!important;
+}
+
+.action .primary {
+	padding: 5px 20px !important;
+	font-size: 14px !important;
+	border-radius: 50px;
+	height: auto;
+}
+
+.table .grid-button {
+	text-transform: none;
+}
+
+input.form-control {
+	font-size: 14px !important;
+}
+
+
+.table > tbody > tr {
+	line-height: 15px !important;
+}
+
+.table > tbody > tr > td {
+	line-height: 15px !important;
+	font-size: 14px !important;
+}
+
+.table > thead > tr > th.number {
+	text-align: right;
+}
+
+.table > tbody > tr > td.number {
+	text-align: right;
+}
+
+.table .name, .table .status {
+	font-size: 14px !important;	
+}
+
+.required {
+	color: #a94442;
+	font-weight: bolder;
+}
+
+.caret-parent{
+	cursor: pointer;	
+}
+
+.pointer{
+	cursor: pointer;	
+}
+
+.filters {
+	margin-bottom: 0px !important;
+}
+
+a.disabled {
+	pointer-events: none;
+    cursor: default;
+    color: #777;
+}
+
+.form-group > .control-label {
+	font-weight: inherit;
+}
+
+label.text-left {
+    text-align: left !important;
+    padding-top: 0 !important;
+}
+
+.shortcuts ul > li:first-of-type > a  {
+	padding-left: 0px !important;
+}
+
+.tab {
+	display: none;
+}
+
+.dateCss .glyphicon-ok:before , .dateCss .glyphicon-remove:before{
+	content:none !important;
+}
+
+.thumbnail {
+	height: 150px;
+	width: 150px;
+	padding: 0;
+	margin: 0;
+}
+
+.thumbnail img {
+	width: 100%;
+	height: 100%;
+}

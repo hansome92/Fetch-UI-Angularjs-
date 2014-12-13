@@ -1,0 +1,86 @@
+<div ng-include="'views/common/header.html'"></div>
+<div class="container post-login" ng-controller="ClientBusinessActivityCtrl">
+  <div ng-include src="'/views/alert.html'"></div>
+  <div class="rows">
+    <div class="page-header">
+    <div class="header">
+      <h3>Edit Client</h3>
+    </div>	
+    <div class="summary">	
+    	<div class="shortcuts">
+    	    <ul role="tablist">
+    	        <li role="presentation"><a href="#/editbasicclientinfo/{{id}}">Basic Client info</a></li>
+    	        <li role="presentation"><a href="#/editadditionalclientinfo/{{id}}">Additonal Client Info</a></li>
+    	        <li role="presentation"><a href="#/editclientidentification/{{id}}">Client ID</a></li>
+    	        <li role="presentation"><a href="#/editnextofkeen/{{id}}">Emergency Contacts/Next of Kin</a></li>
+    	        <li role="presentation"><a href="#/editbusinessdetails/{{id}}" class="active">Business Details</a></li>
+    	    </ul>
+    	</div>
+    </div>
+  </div>
+    <div calss="col-md-12">
+      <div class="col-md-12" ng-show="isLoading">
+        <div class="form-group">          
+          <div class="loading-indicator">Loading...</div>        
+        </div>
+      </div>
+      <form name="ClientBusinessActivityForm" ng-hide="isLoading" class="form-horizontal" ng-submit="validateClientBusinessActivity(clientBusinessActivity)" novalidate show-validation>
+        <div class="col-md-6">
+          <div class="form-group">
+              <label class="control-label col-md-4">Business Activity<span class="required"> *</span></label>
+              <div class="validate col-md-6">
+              	<select id="BusinessActivity_cd_business_activity" ng-model="clientBusinessActivity.BusinessActivity_cd_business_activity" ng-options="columnValues.id as columnValues.value for columnValues in businessActivityOptions" class="form-control"  value="{{columnValues.id}}"  required>
+                  </select>	
+              </div>
+          </div>
+           <div class="form-group">                
+              <label class="control-label col-md-4">Business Name (if any)<span class="required"> *</span></label>
+              <div class="validate col-md-6">
+                  <input id="business_name" name="business_name" class="form-control" type="text" ng-model="clientBusinessActivity.business_name" required></input>
+              </div>
+          </div>
+          <div class="form-group">                
+              <label class="control-label col-md-4">operating since<span class="required"> *</span></label>
+              <div class="validate col-md-6 dateCss">
+                  <input id="operating_since" name="operating_since" class="form-control" type="text" ng-model="clientBusinessActivity.operating_since" datepicker-popup="dd/MM/yyyy" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" required ng-click="open($event)" readonly="true"  required></input>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-md-4">Bookkeeping<span class="required"> *</span></label>
+              <div class="validate col-md-6">
+                <select id="YesNo_cd_book_keeping" ng-model="clientBusinessActivity.YesNo_cd_book_keeping" ng-options="columnValues.id as columnValues.value for columnValues in BookingKeeping" class="form-control"  value="{{columnValues.id}}"  required>
+                  </select> 
+              </div>
+          </div>
+           <div class="form-group">                
+              <label class="control-label col-md-4">Business Address</label>
+              <div class="col-md-6">
+                  <textarea rows="3" id="business_address" name="business_address" class="form-control" ng-model="clientBusinessActivity.business_address"></textarea>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-md-4">Other income generating activities (list)<span class="required"> *</span></label>
+              <div class="validate col-md-6">
+                <select id="YesNo_cd_other_income" ng-model="clientBusinessActivity.YesNo_cd_other_income" ng-options="columnValues.id as columnValues.value for columnValues in otherIncome" class="form-control"  value="{{columnValues.id}}" ng-change="changeIncomeActivity()"  required>
+                </select> 
+              </div>
+          </div>
+          <div class="form-group" ng-show="isIncomeActivity">
+              <label class="control-label col-md-4">list of income activities<span class="required"> *</span></label>
+              <div class="col-md-6">
+                <select id="BusinessActivity_cd_other_income_business_activity" ng-model="clientBusinessActivity.BusinessActivity_cd_other_income_business_activity" ng-options="columnValues.id as columnValues.value for columnValues in otherIncomeBusinessActivity" class="form-control"  value="{{columnValues.id}}">
+                  </select> 
+              </div>
+          </div>          
+        <hr/>
+        <div class="col-md-12">
+          <div class="col-md-offset-4 paddedtop">
+            <a id="cancel" href="#/editnextofkeen/{{id}}" class="btn btn-warning">Back</a>
+            <button id="save" type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>  
+        </div>         
+      </form>
+    </div>
+  </div>
+</div>
